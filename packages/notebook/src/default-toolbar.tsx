@@ -35,6 +35,7 @@ import {
   saveIcon
 } from '@jupyterlab/ui-components';
 
+// notebook的 actions，用来调用事件
 import { NotebookActions } from './actions';
 import { NotebookPanel } from './panel';
 import { Notebook } from './widget';
@@ -170,6 +171,7 @@ export namespace ToolbarItems {
 
   /**
    * Create a run toolbar item.
+   * 运行 codecell 中的代码
    */
   export function createRunButton(
     panel: NotebookPanel,

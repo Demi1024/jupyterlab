@@ -51,7 +51,7 @@ export class InputArea extends Widget {
     const contentFactory = (this.contentFactory =
       options.contentFactory || InputArea.defaultContentFactory);
 
-    // Prompt
+    // Prompt cell input 的前半段，运行时记录运行的索引
     const prompt = (this._prompt = contentFactory.createInputPrompt());
     prompt.addClass(INPUT_AREA_PROMPT_CLASS);
 

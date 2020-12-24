@@ -96,6 +96,7 @@ import { logNotebookOutput } from './nboutput';
 /**
  * The command IDs used by the notebook plugin.
  */
+// notebook 插件的命名空间，用来声明变量
 namespace CommandIDs {
   export const createNew = 'notebook:create-new';
 
@@ -571,13 +572,14 @@ function activateNotebookHandler(
 
   const { commands } = app;
   const tracker = new NotebookTracker({ namespace: 'notebook' });
+  // 这里是 output view 的第一步
   const clonedOutputs = new WidgetTracker<
     MainAreaWidget<Private.ClonedOutputArea>
   >({
     namespace: 'cloned-outputs'
   });
 
-  // Handle state restoration.
+  // Handle state restoration. 处理状态恢复
   if (restorer) {
     void restorer.restore(tracker, {
       command: 'docmanager:open',
@@ -585,6 +587,7 @@ function activateNotebookHandler(
       name: panel => panel.context.path,
       when: services.ready
     });
+    // 恢复
     void restorer.restore(clonedOutputs, {
       command: CommandIDs.createOutputView,
       args: widget => ({
@@ -847,6 +850,7 @@ function activateNotebookHandler(
     rank: 9
   });
 
+  // 增加右键出现的按钮
   // CodeCell context menu groups
   app.contextMenu.addItem({
     command: CommandIDs.createOutputView,
@@ -921,6 +925,7 @@ function activateNotebookHandler(
 
 /**
  * Add the notebook commands to the application's command registry.
+ * 将 notebook 命令添加到应用程序的命令注册表中
  */
 function addCommands(
   app: JupyterFrontEnd,
@@ -1729,6 +1734,7 @@ function addCommands(
     },
     isEnabled
   });
+  // 增加右键出现的按钮
   commands.addCommand(CommandIDs.createOutputView, {
     label: trans.__('Create New View for Output'),
     execute: async args => {
@@ -2418,6 +2424,7 @@ namespace Private {
   /**
    * A widget hosting a cloned output area.
    */
+  // 点击输出预览出现的底部标签页，仿照该方法
   export class ClonedOutputArea extends Panel {
     constructor(options: ClonedOutputArea.IOptions) {
       super();

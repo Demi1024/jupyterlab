@@ -95,6 +95,7 @@ const STDIN_INPUT_CLASS = 'jp-Stdin-input';
  * `null` model, and may want to listen to the `modelChanged`
  * signal.
  */
+// 输出区域的类
 export class OutputArea extends Widget {
   /**
    * Construct an output area widget.
