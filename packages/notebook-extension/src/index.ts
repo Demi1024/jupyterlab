@@ -1734,7 +1734,7 @@ function addCommands(
     },
     isEnabled
   });
-  // 增加右键出现的按钮
+  // 增加右键出现的按钮，考虑在 task 模式下增加类似的按钮
   commands.addCommand(CommandIDs.createOutputView, {
     label: trans.__('Create New View for Output'),
     execute: async args => {

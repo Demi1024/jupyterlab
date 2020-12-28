@@ -65,6 +65,7 @@ export class InputArea extends Widget {
     editor.addClass(INPUT_AREA_EDITOR_CLASS);
 
     const layout = (this.layout = new PanelLayout());
+    // 将运行记录添加至面板中
     layout.addWidget(prompt);
     layout.addWidget(editor);
   }
